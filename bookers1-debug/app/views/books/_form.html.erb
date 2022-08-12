@@ -12,16 +12,23 @@
   <% end %>
 
   <div>
-    <%= f.label :title %>
+    <label for="text">Title</label>
+    <br>
     <%= f.text_field :title %>
   </div>
 
   <div>
-    <%= f.label :body %>
+    <label for="text">Body</label>
+    <br>
     <%= f.text_area :body %>
   </div>
-
-  <div>
-    <%= f.submit %>
+  
+  <div class="action">
+    <% if f.object.new_record? %>
+      <%= f.submit 'Create Book' %>
+    <% else %>
+      <%= f.submit 'Update Book' %>
+    <% end %>
   </div>
+
 <% end %>
