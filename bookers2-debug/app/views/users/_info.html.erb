@@ -29,3 +29,8 @@
 <% else %>
   <%= render 'users/editbtn', user: @user %>
 <% end %>
+
+
+<% if user == current_user %>
+   <%= link_to 'Chat Start', chat_path(user.id) %>
+<% end %>

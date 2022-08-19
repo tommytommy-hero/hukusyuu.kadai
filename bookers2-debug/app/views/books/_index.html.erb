@@ -10,22 +10,21 @@
   </thead>
   <tbody>
     <% books.each do |book| %>
-      <tr>
+
+      <tr id="book_<%= book.id %>">
         <td><%= link_to(book.user) do %>
           <%= image_tag book.user.get_profile_image(50,50) %>
           <% end %>
         </td>
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
-        
-        
-　　    <td id="favorite_buttons_<%= book.id %>">
-　　    　<%= render "favorites/favorites", book: book %>
-　    　</td>
-        
-        <td>コメント数:<%= book.book_comments.count %></td>
+
+
+　　    <td class="favorite-btn"><%= render "favorites/favorites", book: book %></td>
+
+        <td class="comments-count">コメント数:<%= book.book_comments.count %></td>
       </tr>
-      
+
     <% end %>
   </tbody>
 </table>

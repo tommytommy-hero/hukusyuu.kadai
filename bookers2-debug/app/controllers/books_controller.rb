@@ -8,13 +8,24 @@ class BooksController < ApplicationController
     @user = @book.user
     @newbook=Book.new
     @book_comment = BookComment.new
+    @books=Book.all
+    #book閲覧数について
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.view_counts.create(book_id: @book.id)
+    end
   end
 
   def index
     @user = current_user
-    @books = Book.all
-    @book=Book.new
+    to = Time.current.at_end_of_day
+    from = (to - 6.day).at_beginning_of_day
+    @books = Book.includes(:favorited_users).
+      sort_by{|x|
+        x.favorited_users.includes(:favorites).where(created_at: from...to).size
+      }.reverse
+    @book = Book.new
   end
+
 
   def create
     @book = Book.new(book_params)
