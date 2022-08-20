@@ -57,3 +57,5 @@ gem 'devise'
 
 gem "net-smtp"
 gem 'jquery-rails'
+gem "chartkick"
+gem 'chart-js-rails', '~> 0.1.4'
