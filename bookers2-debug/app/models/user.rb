@@ -7,17 +7,20 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
-  
+  has_many :group_users
+  has_many :groups, through: :group_users
+
+
   #閲覧数表示
   has_many :view_counts, dependent: :destroy
-  
+
   #チャット機能実装に際して
   #送るチャット文は１つじゃない
   has_many :chats
-  
+
   #DM送る相手は一人じゃないよね
   has_many :user_rooms
-  
+
   has_one_attached :profile_image
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
