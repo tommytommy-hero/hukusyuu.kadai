@@ -1,6 +1,6 @@
-        <%= form_with model:[@book,@book_comment], local: false do |f| %>
-        <%= f.text_area :comment, row:'5', class: "form-control" %>
+        <%= form_with(model:[@book,@book_comment], remote: true) do |f| %>
+          <%= f.text_area :comment, row:'5', class: "form-control" %>
         <div class="form-group">
-         <%= f.submit "送信"  %>
+          <%= f.submit "送信"  %>
         <% end %>
         </div>
