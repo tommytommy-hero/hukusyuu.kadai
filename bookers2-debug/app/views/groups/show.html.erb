@@ -19,14 +19,18 @@
             <th></th>
           </tr>
         </thead>
-        
+
         <tbody>
           <tr>
             <td><%= image_tag @group.get_image(50,50) %></td>
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
-            <td><%= @group.users.name %></td>
-            
+            <td>
+                <% @group.users.each do |user| %>
+                  <%= user.name %><br>
+                <% end %>
+            </td>
+
             <td>
               <% if @group.owner_id == current_user.id %>
                 <%= link_to 'Edit',edit_group_path(@group), class: "btn btn-sm btn-success" %>

@@ -1,6 +1,6 @@
 class Group < ApplicationRecord
   has_many :group_users
-  has_many :users, through: :group_users
+  has_many :users, through: :group_users, source: :user
 
   validates :name, presence: true
   validates :introduction, presence: true
@@ -13,4 +13,5 @@ class Group < ApplicationRecord
     end
     image.variant(resize_to_limit: [width,height]).processed
   end
+
 end
