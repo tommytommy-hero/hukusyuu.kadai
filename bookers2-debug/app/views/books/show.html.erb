@@ -25,19 +25,19 @@
 
           <!--starレビュー記述-->
           <td>
-            <div id="star-rate<%= @book.id %>"> </div>
-            <script>
+            <div id="star-rate<%= @book.id%>"></td>
+             <script>
               $('#star-rate<%= @book.id %>').empty();
-              $('#star-rate<%= @book.id %>').raty({
-                size      :  36,
-                StarOff   :  '<%= asset_path('star-off.png') %>',
-                StarOn    :  '<%= asset_path('star-on.png') %>',
-                half      :  false,
-                readOnly  :  true,
-                score: <%= @book.star %>,
-              });
-            </script>
-            </td>
+              $('#star-rate<%= @book.id%>').raty({
+                 size      : 36,
+                 starOff   : '<%= asset_path('star-off.png') %>',
+                 starOn    : '<%= asset_path('star-on.png') %>',
+                 half      : false,
+                 readOnly: true,
+                 score: <%= @book.star %>,
+               });
+             </script>
+          </td>
 
           <% if @user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>

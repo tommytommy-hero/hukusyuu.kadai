@@ -6,12 +6,14 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "5.4.0",
+    "@rails/webpacker": "5.4.3",
     "bootstrap": "4.5",
     "chart.js": "^3.9.1",
     "chartkick": "^4.2.0",
     "jquery": "^3.6.0",
+    "jquery-raty-js": "^2.8.0",
     "popper.js": "^1.16.1",
+    "raty": "^1.0.5",
     "raty-js": "^3.1.1",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
@@ -20,6 +22,6 @@
   "version": "0.1.0",
   "devDependencies": {
     "chart.js": "^3.9.1",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3"
   }
 }

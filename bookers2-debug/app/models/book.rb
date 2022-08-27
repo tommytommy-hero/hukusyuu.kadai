@@ -12,6 +12,11 @@ class Book < ApplicationRecord
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
 
+  #並び替え
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :star_count, -> {order(star: :desc)}
+
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
