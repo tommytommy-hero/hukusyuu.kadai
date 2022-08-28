@@ -17,18 +17,8 @@ class BooksController < ApplicationController
   end
 
   def index
-    if params[:latest]
-      @books = Book.latest
-    elsif params[:old]
-      @books = Book.old
-    elsif params[:star_count]
-      @books = Book.star_count
-    else
-      @books = Book.all
-    end
-    
     @user = current_user
-
+    @books = Book.all.order(params[:sort])
     @book = Book.new
   end
 
@@ -37,11 +27,13 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @user=current_user
     @book.user_id = current_user.id
+    tag_list = params[:book][:tag_name].split(',')
     if @book.save
-      redirect_to book_path(@book), notice: "You have created book successfully."
+       @book.save_tags(tag_list)
+       redirect_to book_path(@book), notice: "You have created book successfully."
     else
-      @books = Book.all
-      render 'index'
+       @books = Book.all
+       render 'index'
     end
   end
 
