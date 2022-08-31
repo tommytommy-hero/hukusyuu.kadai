@@ -19,8 +19,9 @@
         <td><%= book.body %></td>
         <td>
           <% book.tags.each do |tag| %>
-            <li style="list-style: none;"><%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>
+            <li style="list-style: none;"><%= link_to tag.name, search_path(word: tag.name, range: "tag", search: 'perfect') %></li>
           <% end %>
+        </td>
 　　    <td class="favorite-btn"><%= render "favorites/favorites", book: book %></td>
         <td>
           <div id="star-rate<%= book.id%>"></div>
@@ -43,11 +44,6 @@
     <% end %>
   </tbody>
 </table>
-
-<%= form_with url: user_search_path(@user),local: false, method: :get do |f| %>
-  <%= f.date_field :created_at %>
-  <%= f.submit '検索', class: 'btn btn-primary'  %>
-<% end %>
 
 <div id="search_result">
   <% if @search_book.present? %>
